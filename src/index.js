@@ -6,7 +6,7 @@ import "./styles.css";
 function App() {
   const [state, setState] = useState(false);
   const toggleTrueFalse = () => {
-    setState(!state);
+    // setState(!state);
   };
   const getTrueFalseAsString = () => {
     if (state) return "true";
