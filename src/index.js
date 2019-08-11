@@ -22,10 +22,16 @@ function App() {
 
   return (
     <div className="App">
-      <p>Your toggle is {getTrueFalseAsString()} 🥳</p>
-      <button onClick={toggleTrueFalse}>Toggle me</button>
-      <p>You clicked below {state.counter} times 🥳</p>
-      <button onClick={add1ToCounter}>Click me</button>
+      <h1>⭐️❤️☕🍍☄⛱⛷☀️☘️</h1>
+      <h2>Your toggle is {getTrueFalseAsString()} 🥳</h2>
+      <button onClick={toggleTrueFalse}>
+        <h3>Toggle me</h3>
+      </button>
+      <h2>You clicked below {state.counter} times 🥳</h2>
+      <button onClick={add1ToCounter}>
+        <h3>Click me</h3>
+      </button>
+      <h1>⭐️❤️☕🍍☄⛱⛷☀️☘️</h1>
     </div>
   );
 }
