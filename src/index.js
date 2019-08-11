@@ -4,12 +4,13 @@ import ReactDOM from "react-dom";
 import "./styles.css";
 
 function App() {
-  const [stateTF, setStateTF] = useState(false);
+  const [stateTF, setStateTF] = useState({ isTrue: false });
   const toggleTrueFalse = () => {
-    // setState(!state);
+    if (stateTF.isTrue) return setStateTF({ isTrue: false });
+    else setStateTF({ isTrue: true });
   };
   const getTrueFalseAsString = () => {
-    if (stateTF) return "true";
+    if (stateTF.isTrue) return "true";
     else return "false";
   };
 
@@ -20,16 +21,11 @@ function App() {
   };
 
   return (
-    <div>
-      <div className="App">
-        <p>You clicked {getTrueFalseAsString} times</p>
-        <button onClick={toggleTrueFalse}>Click me</button>
-      </div>
-
-      <div>
-        <p>You clicked {state.counter} times</p>
-        <button onClick={add1ToCounter}>Click me</button>
-      </div>
+    <div className="App">
+      <p>Your toggle is {getTrueFalseAsString()} 🥳</p>
+      <button onClick={toggleTrueFalse}>Toggle me</button>
+      <p>You clicked below {state.counter} times 🥳</p>
+      <button onClick={add1ToCounter}>Click me</button>
     </div>
   );
 }
