@@ -4,20 +4,21 @@ import ReactDOM from "react-dom";
 import "./styles.css";
 
 function App() {
-  const [stateTF, setStateTF] = useState({ isTrue: false });
+  const [state, setState] = useState({ isTrue: false, counter: 0 });
   const toggleTrueFalse = () => {
-    if (stateTF.isTrue) return setStateTF({ isTrue: false });
-    else setStateTF({ isTrue: true });
+    setState({ isTrue: !state.isTrue, counter: state.counter });
+    // A pure toggle wouldn't need to reference counter, just isTrue,
+    // but in this implementation we are using only one state for both.
+    // In this code example, counter is required to make both work.
   };
   const getTrueFalseAsString = () => {
-    if (stateTF.isTrue) return "true";
+    if (state.isTrue) return "true";
     else return "false";
+    // for whatever reason, returning state.isTrue.toString() crashes
+    // the counter button but not the toggle button
   };
-
-  const [state, setState] = useState({ counter: 0 });
-  const add1ToCounter = () => {
-    const newCounterValue = state.counter + 1;
-    setState({ counter: newCounterValue });
+  const incrementCounter = () => {
+    setState({ counter: state.counter + 1 });
   };
 
   return (
@@ -29,7 +30,7 @@ function App() {
           <h3>Toggle me</h3>
         </button>
         <h2>You clicked below {state.counter} times 🥳</h2>
-        <button onClick={add1ToCounter}>
+        <button onClick={incrementCounter}>
           <h3>Click me</h3>
         </button>
         <h1>⭐️❤️☕🍍☄⛱⛷☀️☘️</h1>
